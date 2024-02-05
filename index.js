@@ -22,9 +22,16 @@ console.error(error);
 })
 .pipe(csv())
 .on('data', (row)=>{
-    console.log(row)
+    printDict(row)
 })
 .on('end', ()=>{
     console.log("End!")
 })
+}
+
+
+function printDict(row){
+for (let key in row){
+    console.log(key + ':' + row[key]);
+}
 }
