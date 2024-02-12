@@ -14,24 +14,19 @@ const dataFile = gcs.bucket(file.bucket).file(file.name);
 
 
 dataFile.CreateReadStream()
-
 .on('error', ()=>{
 console.error(error);
-
-
 })
 .pipe(csv())
+
+
 .on('data', (row)=>{
-    printDict(row)
+    console.log(row)
 })
+
+
 .on('end', ()=>{
     console.log("End!")
 })
 }
 
-
-function printDict(row){
-for (let key in row){
-    console.log(key + ':' + row[key]);
-}
-}
